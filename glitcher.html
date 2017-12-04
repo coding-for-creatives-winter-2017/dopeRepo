@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+		<title>GLITCHER</title>
+		
+<style>
+
+		#alice {
+		    padding-top: 10px;
+		    padding-right: 30px;
+		    padding-bottom: 50px;
+		    padding-left: 80px;
+		}
+		#betty {
+		    padding-top: 20px;
+		}
+		#cara {
+		    padding-top: 500px;
+		    padding-right: 30px;
+		    padding-bottom: 50px;
+		    padding-left: 80px;
+		}
+		img.resize {
+		  max-width:20%;
+		  max-height:20%;
+		}
+		.upload-image-preview {
+		  width: 500px;
+		  height: 500px; 
+		  border: 1px solid red;
+		}
+		.upload-image-preview img{
+		  position: center;
+		  width: 100%;
+		  height:100%;
+		}
+
+</style>
+
+ <script src='https://code.jquery.com/jquery-git.js'></script>
+		    
+		     <!--begin design top-->
+			<div id="alice">
+				<img class="resize" src="glitcher.jpg"; align="right">
+			</div>		
+
+			<div id="betty">	
+				<hr size="1px"; width="1400px"; align="center">
+			</div>
+			  <!--end design top-->	
+</head>
+
+<body>
+<div class="upload-image">
+        <div class="upload-image-preview"></div>
+        <input type="file" name="file" value="Upload Image" />
+      </div>
+
+      <input type="submit" value="Submit" />
+      <button type="reset" value="cancel">Cancel</button>
+    </form>
+  </div>
+
+			<!--begin-->
+			<div class="upload">
+			<script type="text/javascript">
+
+			function imageIsLoaded(e) {
+			    $('#myImg').attr('src', e.target.result);
+			};
+			 $("input[name=file]").change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        var img = $('<img>').attr('src', e.target.result);
+                        $('.upload-image-preview').html(img);
+                    };
+			</script>
+			</div>
+			<script type="text/javascript">
+$(document).ready(function() {
+  $('#localStorageTest').submit(function(e) {
+    e.preventDefault();
+    $('.gettingValues').append(div);
+    $('#localStorageTest')[0].reset();
+    localStorage.clear();
+  });
+  
+              $("input[name=file]").change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        var img = $('<img>').attr('src', e.target.result);
+                        $('.upload-image-preview').html(img);
+                    };
+
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+
+  init();
+});
+
+function init() {
+  if (localStorage["name"]) {
+    $('#name').val(localStorage["name"]);
+  }
+  if (localStorage["email"]) {
+    $('#email').val(localStorage["email"]);
+  }
+  if (localStorage["message"]) {
+    $('#message').val(localStorage["message"]);
+  }
+
+  $('.stored').keyup(function() {
+    localStorage[$(this).attr('name')] = $(this).val();
+  });
+
+}
+
+$('.gettingValues').on('click', "input[name='editHistory']", function() {
+  data = [];
+  $(this).parent().find('span').each(function(el) {
+    data.push($(this).text());
+  });;
+  $('#name').val(data[0]);
+  $('#email').val(data[1]);
+  $('#message').val(data[2]);
+  $(this).parent().remove();
+
+  var data = e.target.getAttribute('data-name'),
+    url = data + ".html";
+  history.pushState(null, null, url);
+});
+
+$('.gettingValues').on('click', "input[name='deleteHistory']", function() {
+
+  console.log("Data deleted");
+
+  if ($(this).parent().hasClass('gettingValues')) return false; //Don't remove the container.
+  $(this).parent().remove();
+});
+
+function editHistoryAPI(data) {
+  console.log("data Name inside editHistoryAPI :", data);
+
+  var data = e.target.getAttribute('data-name'),
+    url = data + ".html";
+  history.pushState(null, null, url);
+  }		
+</script>	
+<!--end-->
+       
+</body>
+</html>
+
+
+
